@@ -120,11 +120,19 @@ function buildSideBySideCss(settings) {
     width: 100% !important;
   }
 
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full
+    [data-test-render-count]:has([data-testid="user-message"])
+    .group.relative.inline-flex {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
   .chat-history .conversation-container.message-actions-hover-boundary {
     display: grid !important;
     grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
     column-gap: ${gutterSpacing}px;
     padding-inline: ${gutterSpacing}px;
+    align-items: start;
   }
 
   .chat-history .conversation-container.message-actions-hover-boundary > user-query {
@@ -138,6 +146,7 @@ function buildSideBySideCss(settings) {
   .chat-history .conversation-container.message-actions-hover-boundary user-query,
   .chat-history .conversation-container.message-actions-hover-boundary model-response {
     width: 100% !important;
+    align-self: start;
   }
 
   ._0f72b0b.ds-scroll-area {
@@ -148,21 +157,53 @@ function buildSideBySideCss(settings) {
   }
 
   ._0f72b0b.ds-scroll-area > .dad65929 {
-    grid-column: 1;
+    grid-column: 2;
   }
 
   ._0f72b0b.ds-scroll-area > ._4f9bf79 {
-    grid-column: 2;
+    grid-column: 1;
   }
 
   ._0f72b0b.ds-scroll-area > ._871cbca {
     grid-column: 1 / -1;
+    width: auto !important;
+    max-width: 100% !important;
   }
 
   ._0f72b0b.ds-scroll-area .ds-message,
   ._0f72b0b.ds-scroll-area .ds-markdown {
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  .css-175oi2r[style*="flex-direction: column"]:has([data-testid="follow_ups_list"]) {
+    display: grid !important;
+    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
+    align-items: start;
+  }
+
+  .css-175oi2r[style*="flex-direction: column"]:has([data-testid="follow_ups_list"])
+    > .r-4qtqp9 {
+    grid-column: 1 / -1;
+  }
+
+  .css-175oi2r[style*="flex-direction: column"]:has([data-testid="follow_ups_list"])
+    > :nth-child(2) {
+    grid-column: 1;
+  }
+
+  .css-175oi2r[style*="flex-direction: column"]:has([data-testid="follow_ups_list"])
+    > :nth-child(3) {
+    grid-column: 2;
+  }
+
+  .css-175oi2r[style*="flex-direction: column"]:has([data-testid="follow_ups_list"])
+    > :nth-child(2),
+  .css-175oi2r[style*="flex-direction: column"]:has([data-testid="follow_ups_list"])
+    > :nth-child(3) {
+    width: 100% !important;
   }
 }
 `;
