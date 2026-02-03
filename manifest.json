@@ -1,10 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "ChatGPT Full-Width Column",
+  "name": "ChatBots Two Columns UI Fix",
   "version": "1.0.0",
-  "description": "Expands ChatGPT conversation column to use full width on large screens.",
+  "description": "Expands ChatGPT conversation column to use full width on large screens and reduce wasted white space.",
   "options_page": "options.html",
   "permissions": ["storage"],
+  "icons": {
+    "16": "i16.png",
+    "32": "i32.png",
+    "48": "i48.png",
+    "64": "i64.png",
+    "128": "i128.png"
+  },
   "content_scripts": [
     {
       "matches": [
