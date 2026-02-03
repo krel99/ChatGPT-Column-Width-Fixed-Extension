@@ -32,4 +32,15 @@
     max-width: 100% !important;
     width: 100% !important;
   }
+
+  .chat-history,
+  .chat-history .conversation-container.message-actions-hover-boundary {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  ._0f72b0b.ds-scroll-area {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }

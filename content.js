@@ -119,6 +119,51 @@ function buildSideBySideCss(settings) {
     max-width: 100% !important;
     width: 100% !important;
   }
+
+  .chat-history .conversation-container.message-actions-hover-boundary {
+    display: grid !important;
+    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary > user-query {
+    grid-column: 1;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary > model-response {
+    grid-column: 2;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary model-response {
+    width: 100% !important;
+  }
+
+  ._0f72b0b.ds-scroll-area {
+    display: grid !important;
+    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
+  }
+
+  ._0f72b0b.ds-scroll-area > .dad65929 {
+    grid-column: 1;
+  }
+
+  ._0f72b0b.ds-scroll-area > ._4f9bf79 {
+    grid-column: 2;
+  }
+
+  ._0f72b0b.ds-scroll-area > ._871cbca {
+    grid-column: 1 / -1;
+  }
+
+  ._0f72b0b.ds-scroll-area .ds-message,
+  ._0f72b0b.ds-scroll-area .ds-markdown {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 `;
 }
