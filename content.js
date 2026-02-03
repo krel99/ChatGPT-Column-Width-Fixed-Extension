@@ -2,6 +2,7 @@ const DEFAULT_SETTINGS = {
   sideBySideEnabled: true,
   promptRatio: 2,
   answerRatio: 3,
+  gutterSpacing: 24,
 };
 
 const STYLE_ID = "chatgpt-column-width-side-by-side-style";
@@ -14,6 +15,14 @@ function clampRatio(value, fallback) {
   return Math.min(number, 10);
 }
 
+function clampSpacing(value, fallback) {
+  const number = Number.parseInt(value, 10);
+  if (Number.isNaN(number) || number < 0) {
+    return fallback;
+  }
+  return Math.min(number, 80);
+}
+
 function buildSideBySideCss(settings) {
   if (!settings.sideBySideEnabled) {
     return "";
@@ -21,12 +30,17 @@ function buildSideBySideCss(settings) {
 
   const promptRatio = clampRatio(settings.promptRatio, DEFAULT_SETTINGS.promptRatio);
   const answerRatio = clampRatio(settings.answerRatio, DEFAULT_SETTINGS.answerRatio);
+  const gutterSpacing = clampSpacing(
+    settings.gutterSpacing,
+    DEFAULT_SETTINGS.gutterSpacing
+  );
 
   return `@media (min-width: 1200px) {
   [data-scroll-root] #thread [role="presentation"] .flex.flex-col.text-sm.pb-25 {
     display: grid !important;
     grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
-    column-gap: 1.5rem;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
   }
 
   [data-scroll-root] #thread article[data-turn="user"],
