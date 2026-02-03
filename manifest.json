@@ -11,7 +11,9 @@
         "https://chatgpt.com/*",
         "https://chat.openai.com/*",
         "https://chat.qwen.ai/*",
-        "https://claude.ai/*"
+        "https://claude.ai/*",
+        "https://gemini.google.com/*",
+        "https://chat.deepseek.com/*"
       ],
       "css": ["content.css"],
       "js": ["content.js"]
