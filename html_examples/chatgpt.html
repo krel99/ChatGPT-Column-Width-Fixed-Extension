@@ -1,0 +1,491 @@
+<div
+    data-scroll-root=""
+    class="@w-sm/main:[scrollbar-gutter:stable_both-edges] touch:[scrollbar-width:none] relative flex min-h-0 min-w-0 flex-1 flex-col [scrollbar-gutter:stable] not-print:overflow-x-clip not-print:overflow-y-auto scroll-pt-(--header-height) [--sticky-padding-top:var(--header-height)] has-data-[fixed-header=less-than-xl]:@w-xl/main:scroll-pt-0 has-data-[fixed-header=less-than-xl]:@w-xl/main:[--sticky-padding-top:0px] has-data-[fixed-header=less-than-xxl]:@w-2xl/main:scroll-pt-0 has-data-[fixed-header=less-than-xxl]:@w-2xl/main:[--sticky-padding-top:0px]"
+    style="--sticky-padding-bottom: 88px"
+>
+    <header
+        id="page-header"
+        data-fixed-header="less-than-xl"
+        class="draggable no-draggable-children sticky top-0 p-2 touch:p-2.5 flex items-center justify-between z-20 h-header-height bg-token-main-surface-primary pointer-events-none select-none [view-transition-name:var(--vt-page-header)] *:pointer-events-auto transition-none motion-safe:transition-none data-[fixed-header=less-than-xxl]:@w-2xl/main:bg-transparent data-[fixed-header=less-than-xxl]:@w-2xl/main:shadow-none! data-[fixed-header=less-than-xl]:@w-xl/main:bg-transparent data-[fixed-header=less-than-xl]:@w-xl/main:shadow-none! [box-shadow:var(--sharp-edge-top-shadow-placeholder)]"
+    >
+        <div
+            class="pointer-events-none absolute start-0 flex flex-col items-center gap-2 lg:start-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2"
+        ></div>
+        <div class="pointer-events-none! flex flex-1 items-center *:pointer-events-auto">
+            <button
+                aria-label="Model selector, current model is 5.2"
+                type="button"
+                id="radix-_r_e_"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                data-state="closed"
+                data-testid="model-switcher-dropdown-button"
+                class="group flex cursor-pointer justify-center items-center gap-1 rounded-lg min-h-9 touch:min-h-10 px-2.5 text-lg hover:bg-token-surface-hover focus-visible:bg-token-surface-hover font-normal whitespace-nowrap focus-visible:outline-none"
+                style="view-transition-name: var(--vt-thread-model-switcher)"
+            >
+                <div>ChatGPT <span class="text-token-text-tertiary">5.2</span></div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true" class="icon-sm text-token-text-tertiary">
+                    <use href="/cdn/assets/sprites-core-c9exbsc1.svg#ba3792" fill="currentColor"></use>
+                </svg>
+            </button>
+            <div class="block lg:hidden"></div>
+        </div>
+        <div class="flex items-center justify-center gap-3 overflow-x-hidden">
+            <div class="shrink-0"></div>
+            <div class="flex items-center justify-end gap-2 overflow-x-hidden">
+                <div class="flex items-center" id="conversation-header-actions">
+                    <button
+                        class="btn relative btn-ghost text-token-text-primary hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover rounded-lg max-sm:hidden"
+                        aria-label="Share"
+                        data-testid="share-chat-button"
+                        style="view-transition-name: var(--vt_share_chat_wide_button)"
+                    >
+                        <div class="flex w-full items-center justify-center gap-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-label="" class="-ms-0.5 icon">
+                                <use href="/cdn/assets/sprites-core-c9exbsc1.svg#630ca2" fill="currentColor"></use></svg
+                            >Share
+                        </div>
+                    </button>
+                    <div class="flex items-center">
+                        <div
+                            class="relative overflow-hidden"
+                            type="button"
+                            id="radix-_r_g_"
+                            aria-haspopup="menu"
+                            aria-expanded="false"
+                            data-state="closed"
+                        >
+                            <button
+                                aria-label="Open conversation options"
+                                data-testid="conversation-options-button"
+                                class="text-token-text-primary no-draggable hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover touch:h-10 touch:w-10 flex h-9 w-9 items-center justify-center rounded-lg focus:outline-none disabled:opacity-50"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                    <use href="/cdn/assets/sprites-core-c9exbsc1.svg#f6d0e2" fill="currentColor"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="min-h-0 flex-1" id="main" z-index="-1">
+        <div id="thread" class="group/thread flex flex-col min-h-full">
+            <div role="presentation" class="composer-parent flex flex-1 flex-col focus-visible:outline-0">
+                <div class="relative basis-auto flex-col -mb-(--composer-overlap-px) [--composer-overlap-px:28px] grow flex">
+                    <div aria-hidden="true" data-edge="true" class="pointer-events-none h-px w-px absolute top-0"></div>
+                    <div class="flex flex-col text-sm pb-25">
+                        <article
+                            class="text-token-text-primary w-full focus:outline-none [--shadow-height:45px] has-data-writing-block:pointer-events-none has-data-writing-block:-mt-(--shadow-height) has-data-writing-block:pt-(--shadow-height) [&amp;:has([data-writing-block])&gt;*]:pointer-events-auto scroll-mt-(--header-height)"
+                            tabindex="-1"
+                            dir="auto"
+                            data-turn-id="130f9ee1-800b-49ac-844e-89a3b6f3bbb6"
+                            data-testid="conversation-turn-1"
+                            data-scroll-anchor="false"
+                            data-turn="user"
+                        >
+                            <h5 class="sr-only">You said:</h5>
+                            <div
+                                class="text-base my-auto mx-auto pt-3 [--thread-content-margin:--spacing(4)] @w-sm/main:[--thread-content-margin:--spacing(6)] @w-lg/main:[--thread-content-margin:--spacing(16)] px-(--thread-content-margin)"
+                            >
+                                <div
+                                    class="[--thread-content-max-width:40rem] @w-lg/main:[--thread-content-max-width:48rem] mx-auto max-w-(--thread-content-max-width) flex-1 group/turn-messages focus-visible:outline-hidden relative flex w-full min-w-0 flex-col"
+                                    tabindex="-1"
+                                >
+                                    <div class="flex max-w-full flex-col grow">
+                                        <div
+                                            data-message-author-role="user"
+                                            data-message-id="130f9ee1-800b-49ac-844e-89a3b6f3bbb6"
+                                            dir="auto"
+                                            class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 text-start break-words whitespace-normal [.text-message+&amp;]:mt-1"
+                                        >
+                                            <div class="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start">
+                                                <div
+                                                    class="user-message-bubble-color corner-superellipse/1.1 relative rounded-[18px] px-4 py-1.5 data-[multiline]:py-3 max-w-[var(--user-chat-width,70%)]"
+                                                >
+                                                    <div class="whitespace-pre-wrap">return one paragraph of text.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="z-0 flex justify-end">
+                                        <div
+                                            class="touch:-me-2 touch:-ms-3.5 -ms-2.5 -me-1 flex flex-wrap items-center gap-y-4 p-1 select-none focus-within:transition-none hover:transition-none touch:pointer-events-auto touch:opacity-100 duration-300 group-hover/turn-messages:delay-300 pointer-events-none opacity-0 motion-safe:transition-opacity group-hover/turn-messages:pointer-events-auto group-hover/turn-messages:opacity-100 group-focus-within/turn-messages:pointer-events-auto group-focus-within/turn-messages:opacity-100 has-data-[state=open]:pointer-events-auto has-data-[state=open]:opacity-100"
+                                            style="mask-position: 0% 0%"
+                                        >
+                                            <button
+                                                class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                                                aria-label="Copy"
+                                                aria-pressed="false"
+                                                data-testid="copy-turn-action-button"
+                                                data-state="closed"
+                                            >
+                                                <span class="flex items-center justify-center touch:w-10 h-8 w-8"
+                                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                                        <use href="/cdn/assets/sprites-core-c9exbsc1.svg#ce3544" fill="currentColor"></use></svg
+                                                ></span></button
+                                            ><button
+                                                class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                                                aria-label="Edit message"
+                                                aria-pressed="false"
+                                                data-state="closed"
+                                            >
+                                                <span class="flex items-center justify-center touch:w-10 h-8 w-8"
+                                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                                        <use href="/cdn/assets/sprites-core-c9exbsc1.svg#6d87e1" fill="currentColor"></use></svg
+                                                ></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article
+                            class="text-token-text-primary w-full focus:outline-none [--shadow-height:45px] has-data-writing-block:pointer-events-none has-data-writing-block:-mt-(--shadow-height) has-data-writing-block:pt-(--shadow-height) [&amp;:has([data-writing-block])&gt;*]:pointer-events-auto [content-visibility:auto] supports-[content-visibility:auto]:[contain-intrinsic-size:auto_100lvh] scroll-mt-[calc(var(--header-height)+min(200px,max(70px,20svh)))]"
+                            tabindex="-1"
+                            dir="auto"
+                            data-turn-id="568de7d0-b99c-472a-8519-75cc81e81671"
+                            data-testid="conversation-turn-2"
+                            data-scroll-anchor="true"
+                            data-turn="assistant"
+                        >
+                            <h6 class="sr-only">ChatGPT said:</h6>
+                            <div
+                                class="text-base my-auto mx-auto pb-10 [--thread-content-margin:--spacing(4)] @w-sm/main:[--thread-content-margin:--spacing(6)] @w-lg/main:[--thread-content-margin:--spacing(16)] px-(--thread-content-margin)"
+                            >
+                                <div
+                                    class="[--thread-content-max-width:40rem] @w-lg/main:[--thread-content-max-width:48rem] mx-auto max-w-(--thread-content-max-width) flex-1 group/turn-messages focus-visible:outline-hidden relative flex w-full min-w-0 flex-col agent-turn"
+                                    tabindex="-1"
+                                >
+                                    <div class="flex max-w-full flex-col grow">
+                                        <div
+                                            data-message-author-role="assistant"
+                                            data-message-id="1f707c9f-2d23-4fd6-879c-78e7927aebdb"
+                                            dir="auto"
+                                            class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 text-start break-words whitespace-normal [.text-message+&amp;]:mt-1"
+                                            data-message-model-slug="gpt-5-2"
+                                        >
+                                            <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[1px]">
+                                                <div class="markdown prose dark:prose-invert w-full wrap-break-word dark markdown-new-styling">
+                                                    <p data-start="0" data-end="521" data-is-last-node="" data-is-only-node="">
+                                                        Here’s a single, clean paragraph: Clear thinking usually comes from reducing noise rather than
+                                                        adding complexity, whether you’re designing a trading strategy, debugging code, or making
+                                                        everyday decisions; when you strip a system down to its core assumptions, you can see where
+                                                        risk is actually coming from, which parts are doing real work, and which ones just look clever
+                                                        but add fragility, and that clarity not only makes optimization easier but also makes failures
+                                                        more predictable, explainable, and ultimately fixable.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="z-0 flex min-h-[46px] justify-start">
+                                        <div
+                                            class="touch:-me-2 touch:-ms-3.5 -ms-2.5 -me-1 flex flex-wrap items-center gap-y-4 p-1 select-none touch:w-[calc(100%+--spacing(3.5))] -mt-1 w-[calc(100%+--spacing(2.5))] duration-[1.5s] focus-within:transition-none hover:transition-none touch:pointer-events-auto pointer-events-none [mask-image:linear-gradient(to_right,black_33%,transparent_66%)] [mask-size:300%_100%] [mask-position:100%_0%] motion-safe:transition-[mask-position] group-hover/turn-messages:pointer-events-auto group-hover/turn-messages:[mask-position:0_0] group-focus-within/turn-messages:pointer-events-auto group-focus-within/turn-messages:[mask-position:0_0] has-data-[state=open]:pointer-events-auto has-data-[state=open]:[mask-position:0_0]"
+                                            style="mask-position: 0% 0%"
+                                        >
+                                            <button
+                                                class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                                                aria-label="Copy"
+                                                aria-pressed="false"
+                                                data-testid="copy-turn-action-button"
+                                                data-state="closed"
+                                            >
+                                                <span class="flex items-center justify-center touch:w-10 h-8 w-8"
+                                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                                        <use href="/cdn/assets/sprites-core-c9exbsc1.svg#ce3544" fill="currentColor"></use></svg
+                                                ></span></button
+                                            ><button
+                                                class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                                                aria-label="Good response"
+                                                aria-pressed="false"
+                                                data-testid="good-response-turn-action-button"
+                                                data-state="closed"
+                                            >
+                                                <span class="flex items-center justify-center touch:w-10 h-8 w-8"
+                                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                                        <use href="/cdn/assets/sprites-core-c9exbsc1.svg#51753c" fill="currentColor"></use></svg
+                                                ></span></button
+                                            ><button
+                                                class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                                                aria-label="Bad response"
+                                                aria-pressed="false"
+                                                data-testid="bad-response-turn-action-button"
+                                                data-state="closed"
+                                            >
+                                                <span class="flex items-center justify-center touch:w-10 h-8 w-8"
+                                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                                        <use href="/cdn/assets/sprites-core-c9exbsc1.svg#2126ae" fill="currentColor"></use></svg
+                                                ></span></button
+                                            ><button
+                                                class="text-token-text-secondary hover:bg-token-bg-secondary rounded-lg"
+                                                aria-label="Share"
+                                                aria-pressed="false"
+                                                data-state="closed"
+                                            >
+                                                <span class="flex items-center justify-center touch:w-10 h-8 w-8"
+                                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                                        <use href="/cdn/assets/sprites-core-c9exbsc1.svg#630ca2" fill="currentColor"></use></svg
+                                                ></span></button
+                                            ><span class="" data-state="closed"
+                                                ><button
+                                                    type="button"
+                                                    id="radix-_r_49_"
+                                                    aria-haspopup="menu"
+                                                    aria-expanded="false"
+                                                    data-state="closed"
+                                                    class="cursor-pointer text-token-text-secondary hover:bg-token-bg-secondary touch:px-2.5 h-[30px] rounded-md px-1.5"
+                                                    aria-label="Switch model"
+                                                >
+                                                    <div class="flex items-center">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="20"
+                                                            height="20"
+                                                            aria-hidden="true"
+                                                            class="icon"
+                                                        >
+                                                            <use href="/cdn/assets/sprites-core-c9exbsc1.svg#ec66f0" fill="currentColor"></use>
+                                                        </svg>
+                                                    </div></button></span
+                                            ><button
+                                                class="text-token-text-secondary hover:bg-token-bg-secondary touch:w-10 flex h-8 w-8 items-center justify-center rounded-lg"
+                                                aria-label="More actions"
+                                                type="button"
+                                                id="radix-_r_4c_"
+                                                aria-haspopup="menu"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon">
+                                                    <use href="/cdn/assets/sprites-core-c9exbsc1.svg#f6d0e2" fill="currentColor"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div aria-hidden="true" data-edge="true" class="pointer-events-none h-px w-px absolute bottom-0"></div>
+                </div>
+                <div
+                    id="thread-bottom-container"
+                    class="sticky bottom-0 group/thread-bottom-container relative isolate z-10 w-full basis-auto has-data-has-thread-error:pt-2 has-data-has-thread-error:[box-shadow:var(--sharp-edge-bottom-shadow)] md:border-transparent md:pt-0 dark:border-white/20 md:dark:border-transparent print:hidden content-fade single-line flex flex-col"
+                >
+                    <div class="relative h-0"></div>
+                    <div id="thread-bottom">
+                        <div
+                            class="text-base mx-auto [--thread-content-margin:--spacing(4)] @w-sm/main:[--thread-content-margin:--spacing(6)] @w-lg/main:[--thread-content-margin:--spacing(16)] px-(--thread-content-margin)"
+                        >
+                            <div
+                                class="[--thread-content-max-width:40rem] @w-lg/main:[--thread-content-max-width:48rem] mx-auto max-w-(--thread-content-max-width) flex-1 mb-4"
+                            >
+                                <div class="flex justify-center empty:hidden"></div>
+                                <div
+                                    class="pointer-events-auto relative z-1 flex h-(--composer-container-height,100%) max-w-full flex-(--composer-container-flex,1) flex-col"
+                                >
+                                    <grammarly-extension
+                                        data-grammarly-shadow-root="true"
+                                        style="position: absolute; top: 0px; left: 0px; pointer-events: none; --rem: 16"
+                                        class="dnXmp"
+                                    ></grammarly-extension
+                                    ><grammarly-extension
+                                        data-grammarly-shadow-root="true"
+                                        style="position: absolute; top: 0px; left: 0px; pointer-events: none; --rem: 16"
+                                        class="dnXmp"
+                                    ></grammarly-extension
+                                    ><button
+                                        type="button"
+                                        name="context-connector-pasted-link-popover-trigger"
+                                        class="invisible absolute self-center"
+                                        aria-hidden="true"
+                                        tabindex="-1"
+                                        aria-haspopup="dialog"
+                                        aria-expanded="false"
+                                        aria-controls="radix-_r_i_"
+                                        data-state="closed"
+                                    ></button>
+                                    <div class="absolute start-0 end-0 bottom-full z-20"></div>
+                                    <form class="group/composer w-full" data-type="unified-composer" style="view-transition-name: var(--vt-composer)">
+                                        <div class="hidden">
+                                            <input
+                                                multiple=""
+                                                tabindex="-1"
+                                                type="file"
+                                                style="
+                                                    border: 0px;
+                                                    clip: rect(0px, 0px, 0px, 0px);
+                                                    clip-path: inset(50%);
+                                                    height: 1px;
+                                                    margin: 0px -1px -1px 0px;
+                                                    overflow: hidden;
+                                                    padding: 0px;
+                                                    position: absolute;
+                                                    width: 1px;
+                                                    white-space: nowrap;
+                                                "
+                                            />
+                                        </div>
+                                        <div class="">
+                                            <div
+                                                class="bg-token-bg-primary corner-superellipse/1.1 cursor-text overflow-clip bg-clip-padding p-2.5 contain-inline-size motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in-out dark:bg-[#303030] grid grid-cols-[auto_1fr_auto] [grid-template-areas:'header_header_header'_'leading_primary_trailing'_'._footer_.'] group-data-expanded/composer:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] shadow-short"
+                                                data-composer-surface="true"
+                                                style="border-radius: 28px"
+                                            >
+                                                <div
+                                                    class="-my-2.5 flex min-h-14 items-center overflow-x-hidden px-1.5 [grid-area:primary] group-data-expanded/composer:mb-0 group-data-expanded/composer:px-2.5"
+                                                >
+                                                    <div
+                                                        class="wcDTda_prosemirror-parent text-token-text-primary max-h-[max(30svh,5rem)] max-h-52 min-h-[var(--deep-research-composer-extra-height,unset)] flex-1 overflow-auto [scrollbar-width:thin] default-browser vertical-scroll-fade-mask"
+                                                    >
+                                                        <textarea
+                                                            class="wcDTda_fallbackTextarea"
+                                                            name="prompt-textarea"
+                                                            placeholder="Ask anything"
+                                                            data-virtualkeyboard="true"
+                                                            style="display: none"
+                                                        ></textarea>
+                                                        <script nonce="">
+                                                            window.__oai_logHTML
+                                                                ? window.__oai_logHTML()
+                                                                : (window.__oai_SSR_HTML = window.__oai_SSR_HTML || Date.now());
+                                                            requestAnimationFrame(function () {
+                                                                window.__oai_logTTI
+                                                                    ? window.__oai_logTTI()
+                                                                    : (window.__oai_SSR_TTI = window.__oai_SSR_TTI || Date.now());
+                                                            });
+                                                        </script>
+                                                        <div
+                                                            contenteditable="true"
+                                                            translate="no"
+                                                            class="ProseMirror"
+                                                            id="prompt-textarea"
+                                                            data-virtualkeyboard="true"
+                                                            spellcheck="false"
+                                                        >
+                                                            <p data-placeholder="Ask anything" class="placeholder">
+                                                                <br class="ProseMirror-trailingBreak" />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="[grid-area:leading]">
+                                                    <span class="flex" data-state="closed"
+                                                        ><button
+                                                            type="button"
+                                                            class="composer-btn"
+                                                            data-testid="composer-plus-btn"
+                                                            aria-label="Add files and more"
+                                                            id="composer-plus-btn"
+                                                            aria-haspopup="menu"
+                                                            aria-expanded="false"
+                                                            data-state="closed"
+                                                        >
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                                aria-hidden="true"
+                                                                class="icon"
+                                                            >
+                                                                <use href="/cdn/assets/sprites-core-c9exbsc1.svg#6be74c" fill="currentColor"></use>
+                                                            </svg></button
+                                                    ></span>
+                                                </div>
+                                                <div class="flex items-center gap-2 [grid-area:trailing]">
+                                                    <div class="ms-auto flex items-center gap-1.5">
+                                                        <span class="inline-flex"
+                                                            ><span class="" data-state="closed"
+                                                                ><button aria-label="Dictate button" type="button" class="composer-btn">
+                                                                    <svg
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        width="20"
+                                                                        height="20"
+                                                                        aria-label=""
+                                                                        class="icon"
+                                                                        font-size="inherit"
+                                                                    >
+                                                                        <use
+                                                                            href="/cdn/assets/sprites-core-c9exbsc1.svg#29f921"
+                                                                            fill="currentColor"
+                                                                        ></use>
+                                                                    </svg></button></span
+                                                        ></span>
+                                                        <div>
+                                                            <span class="" data-state="closed"
+                                                                ><div>
+                                                                    <div class="relative">
+                                                                        <button
+                                                                            type="button"
+                                                                            aria-label="Start Voice"
+                                                                            class="composer-submit-button-color text-submit-btn-text flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:opacity-70 focus-visible:outline-black focus-visible:outline-none disabled:text-[#f4f4f4] disabled:opacity-30 dark:focus-visible:outline-white"
+                                                                            style="view-transition-name: var(--vt-composer-speech-button)"
+                                                                        >
+                                                                            <svg
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="20"
+                                                                                height="20"
+                                                                                aria-hidden="true"
+                                                                                class="h-5 w-5"
+                                                                            >
+                                                                                <use
+                                                                                    href="/cdn/assets/sprites-core-c9exbsc1.svg#f8aa74"
+                                                                                    fill="currentColor"
+                                                                                ></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div></div
+                                                            ></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <grammarly-extension-vbars
+                                        data-grammarly-shadow-root="true"
+                                        class="dnXmp"
+                                        style="display: contents; --rem: 16"
+                                    ></grammarly-extension-vbars>
+                                </div>
+                                <input
+                                    class="sr-only"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                    id="upload-photos"
+                                    accept="image/*"
+                                    multiple=""
+                                    type="file"
+                                /><input
+                                    class="sr-only"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                    id="upload-camera"
+                                    accept="image/*"
+                                    capture="environment"
+                                    multiple=""
+                                    type="file"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="-mt-4 text-token-text-secondary relative w-full overflow-hidden text-center text-xs [view-transition-name:var(--vt-disclaimer)] md:px-[60px]"
+                        style="height: auto; opacity: 1; transform: none"
+                    >
+                        <div class="flex min-h-8 w-full items-center justify-center p-2">
+                            <div class="pointer-events-auto">
+                                <div>
+                                    ChatGPT can make mistakes. Check important info. See
+                                    <a class="text-token-text-primary decoration-token-text-primary cursor-pointer underline">Cookie Preferences</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
