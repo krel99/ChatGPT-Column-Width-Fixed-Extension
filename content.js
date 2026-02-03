@@ -64,6 +64,61 @@ function buildSideBySideCss(settings) {
   [data-scroll-root] #thread article[data-turn="assistant"] .markdown {
     max-width: 100% !important;
   }
+
+  #chat-message-container {
+    display: grid !important;
+    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
+  }
+
+  #chat-message-container .qwen-chat-message-user,
+  #chat-message-container .qwen-chat-message-assistant {
+    width: 100% !important;
+  }
+
+  #chat-message-container .qwen-chat-message-user {
+    grid-column: 1;
+  }
+
+  #chat-message-container .qwen-chat-message-assistant {
+    grid-column: 2;
+  }
+
+  #chat-message-container .chat-user-message,
+  #chat-message-container .chat-response-message-right {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full {
+    display: grid !important;
+    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
+  }
+
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full
+    [data-test-render-count]:has([data-testid="user-message"]) {
+    grid-column: 1;
+  }
+
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full
+    [data-test-render-count]:has(.font-claude-response) {
+    grid-column: 2;
+  }
+
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full
+    [data-test-render-count] {
+    width: 100% !important;
+  }
+
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full
+    [data-testid="user-message"],
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full .font-claude-response {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 `;
 }

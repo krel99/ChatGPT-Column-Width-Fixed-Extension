@@ -14,4 +14,22 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+
+  #chat-message-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  #chat-message-container .chat-response-message-right,
+  #chat-message-container .chat-user-message-container {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .mx-auto.flex.size-full.max-w-3xl.flex-col,
+  .flex-1.flex.flex-col.px-4.max-w-3xl.mx-auto.w-full {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
