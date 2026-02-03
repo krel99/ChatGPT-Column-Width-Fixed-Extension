@@ -135,36 +135,56 @@ function buildSideBySideCss(settings) {
 
   .chat-history .conversation-container.message-actions-hover-boundary {
     display: grid !important;
-    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    grid-template-columns: minmax(0, ${promptRatio}fr) minmax(0, ${answerRatio}fr);
     column-gap: ${gutterSpacing}px;
     padding-inline: ${gutterSpacing}px;
     align-items: start;
+    grid-auto-flow: row;
     overflow: visible !important;
     width: 100% !important;
     max-width: 100% !important;
     margin-inline: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary > user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary > .user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary > model-response,
+  .chat-history .conversation-container.message-actions-hover-boundary > .model-response {
+    overflow: visible !important;
+    min-width: 0 !important;
   }
 
   .chat-history {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding-inline: 0 !important;
+    padding-inline: ${gutterSpacing}px !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary > user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary > .user-query {
+    grid-column: 1;
+    min-width: 0 !important;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary > model-response,
+  .chat-history .conversation-container.message-actions-hover-boundary > .model-response {
+    grid-column: 2;
+    min-width: 0 !important;
+    justify-self: stretch;
+    align-self: stretch;
     overflow: visible !important;
   }
 
-  .chat-history .conversation-container.message-actions-hover-boundary > user-query {
-    grid-column: 1;
-    min-width: 0 !important;
-  }
-
-  .chat-history .conversation-container.message-actions-hover-boundary > model-response {
-    grid-column: 2;
-    min-width: 0 !important;
-  }
-
   .chat-history .conversation-container.message-actions-hover-boundary user-query,
-  .chat-history .conversation-container.message-actions-hover-boundary model-response {
+  .chat-history .conversation-container.message-actions-hover-boundary .user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary model-response,
+  .chat-history .conversation-container.message-actions-hover-boundary .model-response {
     width: 100% !important;
     align-self: start;
     max-width: 100% !important;
@@ -173,7 +193,9 @@ function buildSideBySideCss(settings) {
   }
 
   .chat-history .conversation-container.message-actions-hover-boundary user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary .user-query,
   .chat-history .conversation-container.message-actions-hover-boundary user-query-content,
+  .chat-history .conversation-container.message-actions-hover-boundary .user-query-content,
   .chat-history .conversation-container.message-actions-hover-boundary
     .user-query-container {
     width: 100% !important;
@@ -184,8 +206,6 @@ function buildSideBySideCss(settings) {
 
   .chat-history .conversation-container.message-actions-hover-boundary .user-query-container,
   .chat-history .conversation-container.message-actions-hover-boundary .query-content,
-  .chat-history .conversation-container.message-actions-hover-boundary
-    .user-query-bubble-with-background,
   .chat-history .conversation-container.message-actions-hover-boundary .horizontal-container,
   .chat-history .conversation-container.message-actions-hover-boundary .query-text {
     width: 100% !important;
@@ -202,10 +222,125 @@ function buildSideBySideCss(settings) {
     display: block !important;
     box-sizing: border-box !important;
     overflow: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 0 !important;
+    margin: 0 !important;
+    padding-inline: 12px !important;
+    align-self: stretch !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary .avatar-gutter {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .horizontal-container {
+    display: block !important;
+    overflow: visible !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary .query-content {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    gap: 6px 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .query-content
+    > .ng-star-inserted:has(.action-button) {
+    order: 2 !important;
+    flex: 0 0 auto !important;
+    align-self: flex-start !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .user-query-bubble-with-background {
+    order: 1 !important;
+    flex: 0 0 100% !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary .query-text,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .query-text-line {
+    display: block !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .presented-response-container,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .response-container,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .response-container-content,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .response-content,
+  .chat-history .conversation-container.message-actions-hover-boundary .markdown {
+    margin-left: 0 !important;
+    margin-inline-start: 0 !important;
+    padding-left: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .user-query-container,
+  .chat-history .conversation-container.message-actions-hover-boundary .query-content {
+    align-items: flex-start !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary
+    user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .user-query,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    user-query-content,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .user-query-content,
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .user-query-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .chat-history .conversation-container.message-actions-hover-boundary
+    .query-content {
+    padding-inline: 0 !important;
+    margin-inline: 0 !important;
+    box-sizing: border-box !important;
   }
 
   ._0f72b0b.ds-scroll-area {
     display: block !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-inline: 0 !important;
   }
 
   ._0f72b0b.ds-scroll-area > .dad65929 {
@@ -224,22 +359,21 @@ function buildSideBySideCss(settings) {
     grid-column: 2;
   }
 
+  ._0f72b0b.ds-scroll-area > .dad65929 .ds-message,
+  ._0f72b0b.ds-scroll-area > .dad65929 .ds-markdown,
+  ._0f72b0b.ds-scroll-area > .dad65929 .fbb737a4 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   ._0f72b0b.ds-scroll-area > ._871cbca {
-    grid-column: 1;
-    width: 100% !important;
-    max-width: 100% !important;
-    justify-self: stretch;
+    width: 66.6667% !important;
+    max-width: 66.6667% !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
   }
 
-  ._0f72b0b.ds-scroll-area .ds-message,
-  ._0f72b0b.ds-scroll-area .ds-markdown,
-  ._0f72b0b.ds-scroll-area .fbb737a4 {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  ._0f72b0b.ds-scroll-area ._871cbca ._020ab5b,
-  ._0f72b0b.ds-scroll-area ._871cbca textarea {
+  ._0f72b0b.ds-scroll-area > ._871cbca textarea {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -279,6 +413,20 @@ function buildSideBySideCss(settings) {
     > :nth-child(2) {
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  [data-scroll-root] #thread form.group\\/composer {
+    width: 66.6667% !important;
+    max-width: 66.6667% !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .\\!box-content.flex.flex-col.bg-bg-000 {
+    width: 66.6667% !important;
+    max-width: 66.6667% !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
   }
 
   .css-175oi2r[style*="flex-direction: column"]:has(
