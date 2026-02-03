@@ -1,0 +1,17 @@
+@media (min-width: 1200px) {
+  [data-scroll-root] #thread .text-base,
+  [data-scroll-root] #thread-bottom .text-base {
+    --thread-content-max-width: 100% !important;
+    --thread-content-margin: 2rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  [data-scroll-root] #thread .text-base > div,
+  [data-scroll-root] #thread-bottom .text-base > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
