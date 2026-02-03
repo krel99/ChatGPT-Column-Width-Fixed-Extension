@@ -7,7 +7,12 @@
   "permissions": ["storage"],
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://chat.qwen.ai/*",
+        "https://claude.ai/*"
+      ],
       "css": ["content.css"],
       "js": ["content.js"]
     }
