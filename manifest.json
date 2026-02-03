@@ -3,10 +3,13 @@
   "name": "ChatGPT Full-Width Column",
   "version": "1.0.0",
   "description": "Expands ChatGPT conversation column to use full width on large screens.",
+  "options_page": "options.html",
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
-      "css": ["content.css"]
+      "css": ["content.css"],
+      "js": ["content.js"]
     }
   ]
 }
