@@ -155,10 +155,12 @@ function buildSideBySideCss(settings) {
 
   .chat-history .conversation-container.message-actions-hover-boundary > user-query {
     grid-column: 1;
+    min-width: 0 !important;
   }
 
   .chat-history .conversation-container.message-actions-hover-boundary > model-response {
     grid-column: 2;
+    min-width: 0 !important;
   }
 
   .chat-history .conversation-container.message-actions-hover-boundary user-query,
@@ -167,6 +169,7 @@ function buildSideBySideCss(settings) {
     align-self: start;
     max-width: 100% !important;
     overflow: visible !important;
+    min-width: 0 !important;
   }
 
   .chat-history .conversation-container.message-actions-hover-boundary user-query,
@@ -176,6 +179,7 @@ function buildSideBySideCss(settings) {
     width: 100% !important;
     max-width: 100% !important;
     overflow: visible !important;
+    min-width: 0 !important;
   }
 
   .chat-history .conversation-container.message-actions-hover-boundary .user-query-container,
@@ -188,6 +192,9 @@ function buildSideBySideCss(settings) {
     max-width: 100% !important;
     box-sizing: border-box !important;
     overflow: visible !important;
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
   }
 
   .chat-history .conversation-container.message-actions-hover-boundary
