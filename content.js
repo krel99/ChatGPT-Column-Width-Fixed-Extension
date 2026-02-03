@@ -415,6 +415,99 @@ function buildSideBySideCss(settings) {
     max-width: 100% !important;
   }
 
+  main [role="feed"],
+  main [data-testid="conversation"],
+  main [data-testid="chat-messages"],
+  main [data-testid="message-list"] {
+    display: grid !important;
+    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
+    align-items: start;
+  }
+
+  main [role="feed"] > article,
+  main [data-testid="conversation"] > article,
+  main [data-testid="chat-messages"] > article,
+  main [data-testid="message-list"] > article {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  main [role="feed"] [data-testid="user-message"],
+  main [role="feed"] .message.user,
+  main [data-testid="conversation"] [data-testid="user-message"],
+  main [data-testid="conversation"] .message.user,
+  main [data-testid="chat-messages"] [data-testid="user-message"],
+  main [data-testid="chat-messages"] .message.user,
+  main [data-testid="message-list"] [data-testid="user-message"],
+  main [data-testid="message-list"] .message.user {
+    grid-column: 1;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  main [role="feed"] [data-testid="assistant-message"],
+  main [role="feed"] .message.assistant,
+  main [data-testid="conversation"] [data-testid="assistant-message"],
+  main [data-testid="conversation"] .message.assistant,
+  main [data-testid="chat-messages"] [data-testid="assistant-message"],
+  main [data-testid="chat-messages"] .message.assistant,
+  main [data-testid="message-list"] [data-testid="assistant-message"],
+  main [data-testid="message-list"] .message.assistant {
+    grid-column: 2;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.cw-grok-page .cw-grok-chat {
+    display: grid !important;
+    grid-template-columns: ${promptRatio}fr ${answerRatio}fr;
+    column-gap: ${gutterSpacing}px;
+    padding-inline: ${gutterSpacing}px;
+    align-items: start;
+  }
+
+  body.cw-grok-page .cw-grok-chat > .cw-grok-message {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  body.cw-grok-page .cw-grok-chat > .cw-grok-message[data-cw-role="user"] {
+    grid-column: 1;
+  }
+
+  body.cw-grok-page .cw-grok-chat > .cw-grok-message[data-cw-role="assistant"] {
+    grid-column: 2;
+  }
+
+  .cw-pplx-related .cw-pplx-related-list {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    transition: max-height 200ms ease, opacity 150ms ease;
+  }
+
+  .cw-pplx-related.cw-open .cw-pplx-related-list {
+    max-height: 1200px !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .cw-pplx-related .cw-pplx-related-toggle {
+    margin-left: auto !important;
+    border: 1px solid currentColor !important;
+    background: transparent !important;
+    padding: 2px 8px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    opacity: 0.75 !important;
+  }
+
   [data-scroll-root] #thread form.group\\/composer {
     width: 66.6667% !important;
     max-width: 66.6667% !important;
@@ -570,3 +663,124 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   }
   applySettings(nextSettings);
 });
+
+function isGrokPage() {
+  return (
+    (location.hostname === "x.com" || location.hostname === "twitter.com") &&
+    location.pathname.startsWith("/i/grok")
+  );
+}
+
+function findGrokChatContainer() {
+  const candidates = Array.from(
+    document.querySelectorAll('main [role="log"], main [aria-live="polite"], main [aria-live="assertive"]')
+  ).filter((node) => node.children && node.children.length >= 2);
+  if (candidates.length === 0) {
+    return null;
+  }
+  return candidates.reduce((best, current) =>
+    current.children.length > best.children.length ? current : best
+  );
+}
+
+function classifyGrokMessage(node, fallbackRole) {
+  const testId = (node.getAttribute("data-testid") || "").toLowerCase();
+  const aria = (node.getAttribute("aria-label") || "").toLowerCase();
+  const text = (node.textContent || "").toLowerCase();
+  if (testId.includes("user") || aria.includes("you") || text.startsWith("you")) {
+    return "user";
+  }
+  if (testId.includes("assistant") || testId.includes("grok") || aria.includes("grok")) {
+    return "assistant";
+  }
+  return fallbackRole;
+}
+
+function applyGrokLayout() {
+  if (!isGrokPage()) {
+    return;
+  }
+  document.body.classList.add("cw-grok-page");
+  const container = findGrokChatContainer();
+  if (!container) {
+    return;
+  }
+  container.classList.add("cw-grok-chat");
+  const items = Array.from(container.children);
+  let nextFallback = "user";
+  for (const item of items) {
+    if (!(item instanceof HTMLElement)) {
+      continue;
+    }
+    item.classList.add("cw-grok-message");
+    if (!item.dataset.cwRole) {
+      const role = classifyGrokMessage(item, nextFallback);
+      item.dataset.cwRole = role;
+      nextFallback = role === "user" ? "assistant" : "user";
+    }
+  }
+}
+
+function setupGrokObserver() {
+  if (!isGrokPage()) {
+    return;
+  }
+  applyGrokLayout();
+  const observer = new MutationObserver(() => {
+    applyGrokLayout();
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+}
+
+function isPerplexityPage() {
+  return location.hostname.endsWith("perplexity.ai");
+}
+
+function setupPerplexityRelatedSpoiler() {
+  if (!isPerplexityPage()) {
+    return;
+  }
+
+  const seen = new WeakSet();
+
+  const enhance = () => {
+    const titles = Array.from(document.querySelectorAll("div.font-sans")).filter(
+      (el) => el.textContent && el.textContent.trim() === "Related"
+    );
+    for (const title of titles) {
+      const container = title.closest(".gap-y-lg.flex.flex-col");
+      if (!container || seen.has(container)) {
+        continue;
+      }
+      const list = container.querySelector(".divide-y.border-t");
+      if (!list) {
+        continue;
+      }
+      container.classList.add("cw-pplx-related");
+      container.classList.remove("cw-open");
+      list.classList.add("cw-pplx-related-list");
+
+      const headerRow = container.querySelector(".flex.items-center.justify-between");
+      if (headerRow && !headerRow.querySelector(".cw-pplx-related-toggle")) {
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "cw-pplx-related-toggle";
+        toggle.textContent = "Show";
+        toggle.addEventListener("click", () => {
+          const isOpen = container.classList.toggle("cw-open");
+          toggle.textContent = isOpen ? "Hide" : "Show";
+        });
+        headerRow.append(toggle);
+      }
+
+      seen.add(container);
+    }
+  };
+
+  enhance();
+  const observer = new MutationObserver(() => enhance());
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+}
+
+setupGrokObserver();
+setupPerplexityRelatedSpoiler();
